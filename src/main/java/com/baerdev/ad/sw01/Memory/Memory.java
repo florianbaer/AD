@@ -1,4 +1,4 @@
-package com.baerdev.ad.sw1.Memory;
+package com.baerdev.ad.sw01.Memory;
 
 public interface Memory {
     public Allocation malloc(int size);

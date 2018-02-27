@@ -1,4 +1,4 @@
-package com.baerdev.ad.sw1.Memory;
+package com.baerdev.ad.sw01.Memory;
 
 import java.util.LinkedList;
 import java.util.List;
