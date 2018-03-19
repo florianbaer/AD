@@ -1,7 +1,7 @@
 package com.baerdev.ad.sw04.HashTable;
 
 public class DumbHashSet<T> implements HashSet<T> {
-    private static int DEFAULT_ARRAY_SIZE = 42;
+    private static int DEFAULT_ARRAY_SIZE = 10;
 
     private T[] items;
 
