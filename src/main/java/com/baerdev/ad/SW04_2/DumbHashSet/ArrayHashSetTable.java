@@ -1,6 +1,6 @@
 package com.baerdev.ad.SW04_2.DumbHashSet;
 
-import java.lang.reflect.Array;
+import java.util.Arrays;
 
 public class ArrayHashSetTable<T> implements HashSetTable<T> {
     private static int ARRAY_SIZE = 10;
@@ -32,5 +32,15 @@ public class ArrayHashSetTable<T> implements HashSetTable<T> {
     @Override
     public void remove(T item) {
         data[getIndex(item)] = null;
+    }
+
+    @Override
+    public long size() {
+        return Arrays.stream(this.data).filter(x -> x != null).count();
+    }
+
+    @Override
+    public boolean isFull() {
+        return Arrays.stream(this.data).allMatch(x -> x!=null);
     }
 }

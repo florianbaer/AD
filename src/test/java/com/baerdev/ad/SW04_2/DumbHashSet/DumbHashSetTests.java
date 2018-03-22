@@ -41,4 +41,27 @@ public class DumbHashSetTests {
         assertFalse(dumbHashSet.contains(23));
     }
 
+    @Test
+    @Category(ArrayHashSetTable.class)
+    public void fillArrayHashSetAndCheckIfItsFull(){
+        ArrayHashSetTable<Integer> dumbHashSet = new ArrayHashSetTable<>();
+        for (int count = 0; count < 10; count++){
+            dumbHashSet.add(count);
+        }
+
+        assertTrue(dumbHashSet.isFull());
+    }
+
+
+    @Test
+    @Category(ArrayHashSetTable.class)
+    public void checkArrayHashSetWhichIsNotFullAndCheckIfItsFull(){
+        ArrayHashSetTable<Integer> dumbHashSet = new ArrayHashSetTable<>();
+        for (int count = 0; count < 5; count++){
+            dumbHashSet.add(count);
+        }
+
+        assertFalse(dumbHashSet.isFull());
+        assertEquals(5, dumbHashSet.size());
+    }
 }
