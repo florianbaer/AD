@@ -24,13 +24,13 @@ public class BucketListHashTableTests {
         Assert.assertFalse(table.remove("Dog")); // already removed
     }
 
-    @Test
+    @Test(expected = UnsupportedOperationException.class)
     public void testGetEntry() {
-        BucketListHashTable table = new BucketListHashTable();
+        BucketListHashTable<String> table = new BucketListHashTable<>();
         String dog = "Dog";
         table.put(dog);
         Assert.assertEquals(dog, table.get(dog.hashCode()));
-        Assert.assertNull(table.get("Cat".hashCode()));
+        Assert.assertEquals(dog, table.get("cat".hashCode()));
     }
 
     @Test
