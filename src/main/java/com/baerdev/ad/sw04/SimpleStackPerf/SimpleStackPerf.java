@@ -29,7 +29,8 @@ import java.util.concurrent.LinkedBlockingDeque;
             return items;
         }
 
-        public static interface StackAdder {
+        @FunctionalInterface
+        public interface StackAdder {
             public void add(Integer x);
         }
 
@@ -76,7 +77,8 @@ import java.util.concurrent.LinkedBlockingDeque;
             long[] durations = new long[cycles];
             for (int i = 0; i < cycles; i++) {
                 Stack<Integer> stack = new Stack<Integer>();
-                durations[i] = doPerfCycle((x) -> stack.push(x), samples, sampleSize);
+                StackAdder adder = (x) -> stack.push(x);
+                durations[i] = doPerfCycle(adder, samples, sampleSize);
             }
 
             return report(Stack.class.getName(), durations, cycles);
