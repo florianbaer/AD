@@ -52,6 +52,17 @@ public class DumbHashSetTests {
         assertTrue(dumbHashSet.isFull());
     }
 
+    @Test(expected = UnsupportedOperationException.class)
+    @Category(ArrayHashSetTable.class)
+    public void overfillArrayHashSetAndCheckIfItsFull(){
+        ArrayHashSetTable<Integer> dumbHashSet = new ArrayHashSetTable<>();
+        for (int count = 0; count < 12; count++){
+            dumbHashSet.add(count);
+        }
+
+        assertTrue(dumbHashSet.isFull());
+    }
+
 
     @Test
     @Category(ArrayHashSetTable.class)
