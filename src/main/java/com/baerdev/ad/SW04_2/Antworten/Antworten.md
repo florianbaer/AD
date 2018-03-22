@@ -4,3 +4,6 @@
 
 #2.3
 h. beim aufruf von Remove wieder Elemente nachrücken  
+
+#3.3
+a. komplexität 
