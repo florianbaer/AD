@@ -1,4 +1,4 @@
-package com.baerdev.ad.sw04.BucketHashSet;
+package com.baerdev.ad.sw04.HashSetPerf;
 import com.baerdev.ad.sw04.BucketHashSet.BucketHashSet;
 
 
@@ -9,7 +9,7 @@ import java.util.Set;
 public class SimpleHashSetPef {
 
     final private static int MAX_PERF_CYCLES = 10;
-    final private static int MAX_ITEM_SAMPLES = 100000;
+    final private static int MAX_ITEM_SAMPLES = 1000;
     final private static int MAX_SET_SIZE = 100;
     //final private static int MAX_SET_SIZE = MAX_ITEM_SAMPLES;
 
@@ -25,8 +25,6 @@ public class SimpleHashSetPef {
 
     public static void main(String[] args) {
         doPerfMeasurement(new BucketHashSet<Item>(MAX_SET_SIZE), MAX_PERF_CYCLES, MAX_ITEM_SAMPLES);
-        // NOTE(TF): not possible to use for more than MAX_SET_SIZE item samples because of eventual internal array overflow.
-        //doPerfMeasurement(new SoundedHashSet<Item>(MAX_SET_SIZE), MAX_PERF_CYCLES, MAX_ITEM_SAMPLES);
         doPerfMeasurement(new HashSet<Item>(MAX_SET_SIZE), MAX_PERF_CYCLES, MAX_ITEM_SAMPLES);
     }
 
@@ -81,13 +79,13 @@ public class SimpleHashSetPef {
 
         @Override
         public int hashCode() {
-            //log("Calculation hashCode for '" + this + "'");
+            log("Calculation hashCode for '" + this + "'");
             return Objects.hash(value);
         }
 
         @Override
         public boolean equals(Object other) {
-            //log("Check equality of '" + this + "' and '" + other + "'");
+            log("Check equality of '" + this + "' and '" + other + "'");
             if(this == other) {
                 return true;
             }

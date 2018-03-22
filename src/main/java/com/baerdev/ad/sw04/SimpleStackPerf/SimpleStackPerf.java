@@ -62,7 +62,6 @@ import java.util.concurrent.LinkedBlockingDeque;
                     try {
                         stack.push(x);
                     } catch (StackFullException e) {
-                        // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
                 }, samples, sampleSize);
