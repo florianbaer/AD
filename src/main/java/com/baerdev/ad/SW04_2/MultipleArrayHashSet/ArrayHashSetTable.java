@@ -20,7 +20,7 @@ public class ArrayHashSetTable<T> implements HashSetTable<T> {
     @Override
     public void add(T item) {
         if (this.isFull()) {
-            throw new UnsupportedOperationException("The set is already full.");
+            throw new UnsupportedOperationException("The set is already full."); // eigene Exception
         }
 
         boolean insertPending = true;
@@ -56,7 +56,7 @@ public class ArrayHashSetTable<T> implements HashSetTable<T> {
         if (this.contains(item)) {
             for (int offset = 0; offset < data.length - 1; offset++) {
                 if (data[(getIndex(item) + offset) % ARRAY_SIZE] == item) {
-                    data[(getIndex(item) + offset) % ARRAY_SIZE] = null;
+                    data[(getIndex(item) + offset) % ARRAY_SIZE] = null; // tombstone nicht vergessen
                 }
             }
         } else {

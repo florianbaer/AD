@@ -60,6 +60,6 @@ public class SingleLinkedList<T> implements Iterable<T> {
 
         @Override
         public Iterator<T> iterator() {
-            return new SingleLinkedListIterator(start);
+            return  null; //todo: add singlelinedlistiterator
         }
 }

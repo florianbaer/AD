@@ -16,7 +16,7 @@ import java.util.concurrent.LinkedBlockingDeque;
     public class SimpleStackPerf {
 
         final private static int MAX_PERF_CYCLES = 10;
-        final private static int MAX_ITEM_SAMPLES = 10000000;
+        final private static int MAX_ITEM_SAMPLES = 10000;
         final private static int MAX_STACK_SIZE = MAX_ITEM_SAMPLES;
 
         private static Integer[] getItems(int amount) {
@@ -76,7 +76,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 
             long[] durations = new long[cycles];
             for (int i = 0; i < cycles; i++) {
-                Stack<Integer> stack = new Stack<Integer>();
+                Stack<Integer> stack = new Stack<Integer>(); // size of datastructure
                 StackAdder adder = (x) -> stack.push(x);
                 durations[i] = doPerfCycle(adder, samples, sampleSize);
             }
