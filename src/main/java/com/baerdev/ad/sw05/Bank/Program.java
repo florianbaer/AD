@@ -14,10 +14,10 @@ public class Program {
     public static void main(String[] args) throws InterruptedException {
 
         // Lege die Anzahl an Accounts fest
-        final int numberOfAccounts = 10;
+        final int numberOfAccounts = 100;
 
         // Lege den zu transferrierenden Betrag fest
-        final int amount = 10000;
+        final int amount = 1000;
 
         // Account-Listen initialisieren
         initializeSourceAndDestiantionAccounts(numberOfAccounts);
