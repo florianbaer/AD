@@ -30,7 +30,7 @@ public class AdditionTask implements Runnable{
 
         // Aufräumphase
         if (!isStopped()) {
-            LOG.info(runThread.getName() + ": SUM" + n + " -> " + sum);
+            LOG.info(runThread.getName() + ": SUM" + " -> " + sum);
         } else {
             LOG.info(runThread.getName() + ": interrupted.");
         }
