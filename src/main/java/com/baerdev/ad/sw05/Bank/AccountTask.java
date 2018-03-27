@@ -25,8 +25,7 @@ public class AccountTask implements Runnable {
             for (int i = 1; i < (this.amount + 1); i++) {
                 this.source.transfer(this.target, amountToTransfer);
             }
-            LOG.info(String.format("Source [%s] balance: %s",source.getId(), source.getBalance()));
-            LOG.info(String.format("Target [%s] balance: %s",target.getId(), target.getBalance()));
+            LOG.info(String.format("Source [%s] balance: %s to Target [%s] balance: %s",source.getId(), source.getBalance(), target.getId(), target.getBalance()));
         }
     }
 }
