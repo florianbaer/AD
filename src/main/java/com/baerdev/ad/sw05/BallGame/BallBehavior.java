@@ -1,46 +1,61 @@
 package com.baerdev.ad.sw05.BallGame;
 
-import javax.swing.*;
-import java.awt.*;
-/*
-public class BallBehavior implements Runnable {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.util.ArrayList;
+import java.awt.Color;
+import java.util.List;
+import java.awt.Graphics2D;
+import java.util.Random;
+
+public class BallBehavior implements PanelDrawable, Runnable {
+    private final Thread thread;
+    private static final Logger LOG = LogManager.getLogger(BallBehavior.class);
     private Ball ball;
-    private JPanel panel;
-    private int gravity = 5;
+    private int panelHeight;
+    private final Random random = new Random();
 
-    public BallBehavior(Ball ball, JPanel panel){
+    public BallBehavior(Ball ball, int panelHeight) {
         this.ball = ball;
-        this.panel = panel;
+        this.panelHeight = panelHeight;
+        this.thread = Thread.currentThread();
+
     }
 
+    public boolean isAtTheBottom(Ball ball) {
+        return ball.getY() <= (panelHeight - ball.getDiameter()) ? true : false;
+    }
+
+    public Thread getThreadBehindBall() {
+        return this.thread;
+    }
+
+
+    /**
+     * run-Methode, welche den Kreis bewegt, in dem der y-Wert veraendert wird.
+     */
     @Override
     public void run() {
-        // Initialisierungsphase
-        /*try {
-            while (Thread.currentThread().isInterrupted() == false && this.isOnGround()) {
-                this.calcNewLocation();
-                this.ball.draw();
+        try {
+            while (this.thread.isInterrupted() == false) {
+                while (this.ball.getY() <= (this.panelHeight - this.ball.getDiameter())) {
+                    Thread.sleep(random.nextInt(10));
+                    this.ball.setY(this.ball.getY() + random.nextInt(5));
+                }
             }
-        } catch (InterruptedException ex) {
-            // Thread wurde in einer Wartemethode unterbrochen
-        } finally { // Aufräumphase
+        } catch (InterruptedException e) {
+            LOG.error(e.getMessage());
+            this.thread.interrupt();
         }
     }
 
-    private void calcNewLocation() {
-        for(int counter = 1; counter<= 5 && this.getLowestY() >= this.panel.getHeight(); counter++){
-            ball.setX(ball.getX());
-            ball.setY(ball.getY()-1);
-        }
-    }
+    public Ball getBall(){return this.ball;}
 
-    private int getLowestY() {
-        return this.ball.getY()-this.ball.getRadius();
-    }
+    @Override
+    public void drawCircle(Graphics2D g) {
+        g.setColor(this.ball.getColor());
+        g.fillOval(this.ball.getX(), this.ball.getY(), this.ball.getDiameter(), this.ball.getDiameter());
 
-    private boolean isOnGround() {
-        return false;
     }
 }
-*/
