@@ -25,7 +25,7 @@ public class BallGamePanel extends JPanel implements ActionListener {
         this.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent mouseEvent) {
-                BallBehavior ball = new BallBehavior(new Ball(mouseEvent.getX(), mouseEvent.getY()));
+                BallBehavior ball = new BallBehavior(new Ball(mouseEvent.getX(), mouseEvent.getY()), height);
                 Thread thread = new Thread(ball);
                 thread.start();
                 circles.add(ball);
@@ -50,7 +50,7 @@ public class BallGamePanel extends JPanel implements ActionListener {
             circle.drawCircle(g2);
 
             // Beende den Thread des Balles, wenn er fertig ist, also unten
-            if (circle.isAtTheBottom(circle.getBall(), this.getHeight())) {
+            if (circle.isAtTheBottom(circle.getBall())) {
                 circle.getThreadBehindBall().interrupt();
             }
         }
