@@ -1,5 +1,7 @@
 package com.baerdev.ad.sw10;
 
+import java.util.Random;
+
 public class Quicksort {
     private static final void exchange(final char[] a, final int firstIndex, final int secondIndex) {
         char tmp;
@@ -66,5 +68,18 @@ public class Quicksort {
         if ((up + 1) < right) {
             quickSort(a, (up + 1), right);
         }// rechte Hälfte, ohne T’Elt.
+    }
+
+    public static char[] randomChars(final int lenght){
+        Random rand = new Random();
+        char[] chararray = new char[lenght];
+        for (int i = 0; i <= lenght-1; i++){
+
+            int min = 65;
+            int max = min + 25;
+            chararray[i] = (char)(rand.nextInt(max - min + 1) + min);
+        }
+
+        return chararray;
     }
 }
