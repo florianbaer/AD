@@ -10,7 +10,7 @@ public class Quicksort {
         a[secondIndex] = tmp;
     }
 
-    public static final void quickSort(final char[] a, final int left, final int right) {
+    /*public static final void quickSort(final char[] a, final int left, final int right) {
         int up = left; // linke Grenze
         int down = right - 1;        // rechte Grenze (ohne Trennelement)
         char t = a[right]; // rechtes Element als Trennelement
@@ -37,7 +37,7 @@ public class Quicksort {
         if ((up + 1) < right) {
             quickSort(a, (up + 1), right);
         }// rechte Hälfte, ohne T’Elt.
-    }
+    }*/
 
     public static final void quickSort(final char[] a) {
         int left = 0;
@@ -63,6 +63,7 @@ public class Quicksort {
         } while (!allChecked);
         exchange(a, up, right); // Trennelement an endgültige Position (a[up])
         if (left < (up - 1)) {
+            a =
             quickSort(a, left, (up - 1));
         } // linke Hälfte
         if ((up + 1) < right) {
