@@ -1,10 +1,24 @@
 package com.baerdev.ad.sw10.ex4;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class GenericQuicksortComparable {
+
     public static <T extends Comparable<T>> void qsort(T[] arr, int a, int b) {
         if (a < b) {
             int i = a, j = b;
-            T x = arr[(i + j) / 2];
+            T erst = arr[(i + j) / 2];
+            T zweit = arr[i];
+            T dritt = arr[j];
+
+            List<T> medianHelper = Arrays.asList(erst, zweit, dritt);
+
+            Collections.sort(medianHelper);
+            T x = medianHelper.get(1);
+
 
             do {
                 while (arr[i].compareTo(x) < 0) i++;
