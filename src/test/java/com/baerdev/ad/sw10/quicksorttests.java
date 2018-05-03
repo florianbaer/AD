@@ -11,7 +11,7 @@ public class quicksorttests {
     @Category(Quicksort.class)
     public void getAllElementsFromTable(){
         char[] aray = "qwertzuiopasdfghjklyxcvbnm".toCharArray();
-        Quicksort.quickSort(aray, 0, aray.length-1);
+        Quicksort.quickSort1(aray, 0, aray.length-1);
 
         System.out.println(aray);
     }
@@ -22,8 +22,8 @@ public class quicksorttests {
         System.out.println(Quicksort.randomChars(26));
         char[] aray = "qwertzuiopasdfghjklyxcvbnm".toCharArray();
         char[] aray2 = aray.clone();
-        Quicksort.quickSort(aray, 0, aray.length-1);
-        Quicksort.quickSort(aray2);
+        Quicksort.quickSort1(aray, 0, aray.length-1);
+        Quicksort.quickSort2(aray2);
 
         System.out.println(aray2);
 
@@ -49,7 +49,7 @@ public class quicksorttests {
     public void measureTime (){
         char[] aray2 = Quicksort.randomChars(100000);
         long start = System.nanoTime();
-        Quicksort.quickSort(aray2);
+        Quicksort.quickSort2(aray2);
 
         long end = System.nanoTime();
 
