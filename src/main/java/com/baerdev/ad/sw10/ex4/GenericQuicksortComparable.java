@@ -31,6 +31,16 @@ public class GenericQuicksortComparable {
         for(Integer i: ia) {
             System.out.println(i);
         }
+        Character[] b = {'a','c', 'b'};
+        GenericQuicksortComparable.qsort(b, 0, b.length-1);
+        for(Character i: b) {
+            System.out.println(i);
+        }
 
+        String[] c = {"adolf", "alfons", "Aargau"};
+        GenericQuicksortComparable.qsort(c, 0, b.length-1);
+        for(String i: c) {
+            System.out.println(i);
+        }
     }
 }
