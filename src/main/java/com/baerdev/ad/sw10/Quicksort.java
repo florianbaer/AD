@@ -260,6 +260,7 @@ public class Quicksort {
                 allChecked = true; // Austauschen beendet
             }
         } while (!allChecked);
+
         exchange(a, up, right); // Trennelement an endgültige Position (a[up])
         if (left < (up - 1)) {
             //n<M prüfen
