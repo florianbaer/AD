@@ -20,6 +20,19 @@ public class Quicksort {
         a[secondIndex] = tmp;
     }
 
+    public static char[] randomChars(final int lenght) {
+        Random rand = new Random();
+        char[] chararray = new char[lenght];
+        for (int i = 0; i <= lenght - 1; i++) {
+
+            int min = 65;
+            int max = min + 50;
+            chararray[i] = (char) (rand.nextInt(max - min + 1) + min);
+        }
+
+        return chararray;
+    }
+
     public static final void quickSort(final char[] a, final int left, final int right) {
         int up = left;                  // linke Grenze
         int down = right - 1;           // rechte Grenze (ohne Trennelement)
@@ -79,18 +92,5 @@ public class Quicksort {
         }
     }
 
-    //Create Random Size Char Array
-    public static char[] randomChars(final int length) {
 
-        char myCharArray[] = new char[length];
-        Random r = new Random();
-
-        // Array befüllen
-        for (int i = 0; i < length; i++) {
-            myCharArray[i] = (char) (r.nextInt(26) + 97);
-            //System.out.print(myCharArray[i]);
-        }
-        return myCharArray;
-
-    }
 }

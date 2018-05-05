@@ -1,6 +1,7 @@
 package com.baerdev.ad.sw10.Aufgabe2;
 
 import com.baerdev.ad.sw10.Aufgabe2.*;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -15,16 +16,15 @@ public class QuickSortTests {
         char[] aray = "qwertzuiopasdfghjklyxcvbnm".toCharArray();
         Quicksort.quickSort(aray, 0, aray.length-1);
 
-        System.out.println(aray);
+        Assert.assertArrayEquals("abcdefghijklmnopqrstuvwxyz".toCharArray(), aray);
     }
 
     @Test
-    @Category(com.baerdev.ad.sw10.Quicksort.class)
+    @Category(com.baerdev.ad.sw10.Aufgabe2.Quicksort.class)
     public void orderAllSimpleNumbersAsString(){
-        char[] aray = "qwertzuiopasdfghjklyxcvbnm".toCharArray();
+        char[] aray = "0987654321".toCharArray();
         Quicksort.quickSort(aray, 0, aray.length-1);
-
-        System.out.println(aray);
+        Assert.assertArrayEquals("0123456789".toCharArray(), aray);
     }
 
     @Test
