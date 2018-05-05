@@ -47,7 +47,6 @@ public class FixedSizeHeap implements IntegerHeap {
         reorganize(counter);
         //counter aufzählen
         counter++;
-
     }
 
     @Override
