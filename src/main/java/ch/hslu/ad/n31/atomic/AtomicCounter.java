@@ -13,32 +13,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.n21.queue.forum;
+package ch.hslu.ad.n31.atomic;
+
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * Demonstration der SimpleQueue mit einem Producer und n Consumer.
+ * Thread-sicherer Zähler mit AtomicInteger.
  */
-public final class DemoSimpleQueue {
+public final class AtomicCounter {
+
+    private final AtomicInteger counter = new AtomicInteger(0);
 
     /**
-     * Privater Konstruktor.
+     * Zähler um 1 addieren.
      */
-    private DemoSimpleQueue() {
+    public void increment() {
+        counter.incrementAndGet();
     }
 
     /**
-     * Main-Demo.
-     * @param args not used.
+     * Zähler um 1 subtrahieren.
      */
-    public static void main(final String args[]) {
-        final int n = 1000;
-        final int nCons = 800;
-        final boolean[] check = new boolean[n];
-        final SimpleQueue queue = new SimpleQueue();
+    public void decrement() {
+        counter.decrementAndGet();
+    }
 
-        new Thread(new Producer(queue, n), "Prod  ").start();
-        for (int i = 0; i < nCons; i++) {
-            new Thread(new Consumer(queue, check), "Cons " + (char) (i + 65)).start();
-        }
+    /**
+     * Liefert den Zählerstand.
+     * @return Zählerstand.
+     */
+    public int get() {
+        return counter.get();
     }
 }

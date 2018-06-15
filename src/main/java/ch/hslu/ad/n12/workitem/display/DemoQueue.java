@@ -13,32 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.n21.queue.forum;
+package ch.hslu.ad.n12.workitem.display;
 
 /**
- * Demonstration der SimpleQueue mit einem Producer und n Consumer.
+ * Anzeige von Work Items.
  */
-public final class DemoSimpleQueue {
+public final class DemoQueue {
 
     /**
-     * Privater Konstruktor.
-     */
-    private DemoSimpleQueue() {
-    }
-
-    /**
-     * Main-Demo.
+     * Anzeige eines Work Items für eine Sekunde.
+     *
      * @param args not used.
+     * @throws InterruptedException wird hier nicht passieren.
      */
-    public static void main(final String args[]) {
-        final int n = 1000;
-        final int nCons = 800;
-        final boolean[] check = new boolean[n];
-        final SimpleQueue queue = new SimpleQueue();
-
-        new Thread(new Producer(queue, n), "Prod  ").start();
-        for (int i = 0; i < nCons; i++) {
-            new Thread(new Consumer(queue, check), "Cons " + (char) (i + 65)).start();
+    public static void main(final String[] args) throws InterruptedException {
+        DisplayQueue displayQueue = new DisplayQueue();
+        for (int i = 1; i <= 5; i++) {
+            displayQueue.enqueue("Schritt " + i);
         }
+        displayQueue.startWorker();
     }
 }

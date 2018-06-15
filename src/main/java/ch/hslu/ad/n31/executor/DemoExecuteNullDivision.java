@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Hochschule Luzern - Informatik.
+ * Copyright 2018 Hochschule Luzern Informatik.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,32 +13,28 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.n21.queue.forum;
+package ch.hslu.ad.n31.executor;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
- * Demonstration der SimpleQueue mit einem Producer und n Consumer.
+ * Demonstration mit einem Executor, der einen "fehlerhaften" einem Task erhält.
  */
-public final class DemoSimpleQueue {
+public final class DemoExecuteNullDivision {
 
     /**
      * Privater Konstruktor.
      */
-    private DemoSimpleQueue() {
+    private DemoExecuteNullDivision() {
     }
 
     /**
      * Main-Demo.
      * @param args not used.
      */
-    public static void main(final String args[]) {
-        final int n = 1000;
-        final int nCons = 800;
-        final boolean[] check = new boolean[n];
-        final SimpleQueue queue = new SimpleQueue();
-
-        new Thread(new Producer(queue, n), "Prod  ").start();
-        for (int i = 0; i < nCons; i++) {
-            new Thread(new Consumer(queue, check), "Cons " + (char) (i + 65)).start();
-        }
+    public static void main(final String[] args) {
+        final ExecutorService executor = Executors.newCachedThreadPool();
+        executor.execute(() -> System.out.println(1 / 0));
     }
 }

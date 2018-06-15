@@ -13,32 +13,34 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.hslu.ad.n21.queue.forum;
+package ch.hslu.ad.n31.atomic;
 
 /**
- * Demonstration der SimpleQueue mit einem Producer und n Consumer.
+ * Thread-sicherer Zähler.
  */
-public final class DemoSimpleQueue {
+public final class SynchronizedCounter {
+
+    private int counter = 0;
 
     /**
-     * Privater Konstruktor.
+     * Zähler um 1 addieren.
      */
-    private DemoSimpleQueue() {
+    public synchronized void increment() {
+        counter++;
     }
 
     /**
-     * Main-Demo.
-     * @param args not used.
+     * Zähler um 1 subtrahieren.
      */
-    public static void main(final String args[]) {
-        final int n = 1000;
-        final int nCons = 800;
-        final boolean[] check = new boolean[n];
-        final SimpleQueue queue = new SimpleQueue();
+    public synchronized void decrement() {
+        counter--;
+    }
 
-        new Thread(new Producer(queue, n), "Prod  ").start();
-        for (int i = 0; i < nCons; i++) {
-            new Thread(new Consumer(queue, check), "Cons " + (char) (i + 65)).start();
-        }
+    /**
+     * Liefert den Zählerstand.
+     * @return Zählerstand.
+     */
+    public synchronized int get() {
+        return counter;
     }
 }

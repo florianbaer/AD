@@ -40,10 +40,10 @@ public final class DemoBoundedBuffer {
      */
     public static void main(final String args[]) throws InterruptedException {
         final Random random = new Random();
-        final int nPros = 3;
+        final int nPros = 200;
         final Producer[] producers = new Producer[nPros];
         final ThreadGroup prosGroup = new ThreadGroup("Producer-Threads");
-        final int mCons = 2;
+        final int mCons = 150;
         final Consumer[] consumers = new Consumer[mCons];
         final ThreadGroup consGroup = new ThreadGroup("Consumer-Threads");
         final BoundedBuffer<Integer> queue = new BoundedBuffer<>(50);
